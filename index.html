@@ -197,9 +197,16 @@ function toggle(name){
   if(i>=0)a.splice(i,1);
   else if(a.length<max)a.push(name);
   else {alert("最大"+max+"体まで選択できます。");return}
-  if(mode==="mine") localStorage.setItem("champions_mine",JSON.stringify(mine));
-  renderTeams();renderPicker();
+  if(mode==="mine"){
+  localStorage.setItem("champions_mine",JSON.stringify(mine));
+  if(mine.length===6){
+    mode="enemy";
+    document.getElementById("search").value="";
+  }
 }
+renderTeams();
+renderPicker();
+
 
 function typeParts(s){return s.split(" / ").map(x=>x.trim())}
 
@@ -255,9 +262,7 @@ document.getElementById("picker").addEventListener("click",function(e){
 /* 6体設定中も同じ一覧を使う。最初は自分モード */
 renderTeams();renderPicker();
 
-/* 「相手6体」見出しをタップすると相手モード */
-document.querySelector("h2:nth-of-type(2)");
-document.getElementById("enemyTeam").previousElementSibling?.addEventListener("click",function(){mode="enemy";renderPicker()});
+/* 「
 })();
 </script>
 </body>
