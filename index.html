@@ -4,233 +4,173 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0f172a">
 <title>ポケモン選出アシスタント</title>
 
 <style>
-:root{
-  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif
-}
 *{box-sizing:border-box}
 body{
-  margin:0;
-  background:#eef2f7;
-  color:#0f172a
+margin:0;
+background:#eef2f7;
+color:#0f172a;
+font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif
 }
 header{
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:#0f172a;
-  color:white;
-  padding:14px 16px 13px;
-  box-shadow:0 2px 12px #0002
+background:#0f172a;
+color:white;
+padding:14px 16px;
+position:sticky;
+top:0;
+z-index:10
 }
-header h1{
-  font-size:19px;
-  margin:0 0 3px
-}
-header p{
-  font-size:11px;
-  margin:0;
-  color:#cbd5e1
-}
-main{
-  max-width:760px;
-  margin:auto;
-  padding:12px 12px 40px
-}
+header h1{font-size:19px;margin:0 0 3px}
+header p{font-size:11px;margin:0;color:#cbd5e1}
+main{max-width:760px;margin:auto;padding:12px 12px 40px}
 .card{
-  background:white;
-  border-radius:16px;
-  padding:14px;
-  margin-bottom:12px;
-  box-shadow:0 2px 10px #0000000c
+background:white;
+border-radius:16px;
+padding:14px;
+margin-bottom:12px;
+box-shadow:0 2px 10px #0000000c
 }
-h2{
-  font-size:16px;
-  margin:0 0 10px
-}
-.small{
-  font-size:11px;
-  color:#64748b;
-  line-height:1.5
-}
+h2{font-size:16px;margin:0 0 10px}
+.small{font-size:11px;color:#64748b;line-height:1.5}
 button{
-  appearance:none;
-  border:0;
-  border-radius:12px;
-  padding:11px 14px;
-  font-size:14px;
-  font-weight:700;
-  background:#2563eb;
-  color:#fff;
-  touch-action:manipulation;
-  cursor:pointer
+border:0;
+border-radius:12px;
+padding:11px 14px;
+font-size:14px;
+font-weight:700;
+background:#2563eb;
+color:white;
+touch-action:manipulation
 }
-button:active{
-  transform:scale(.98)
-}
-button.gray{
-  background:#e2e8f0;
-  color:#0f172a
-}
-button.red{
-  background:#dc2626
-}
-.actions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap
-}
+button.gray{background:#e2e8f0;color:#0f172a}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
 .team{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:7px
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:7px
 }
 .slot{
-  min-height:94px;
-  border:1px dashed #cbd5e1;
-  border-radius:12px;
-  background:#f8fafc;
-  text-align:center;
-  padding:5px
+min-height:94px;
+border:1px dashed #cbd5e1;
+border-radius:12px;
+background:#f8fafc;
+text-align:center;
+padding:5px
 }
 .slot img{
-  width:58px;
-  height:58px;
-  object-fit:contain;
-  display:block;
-  margin:auto
+width:58px;
+height:58px;
+object-fit:contain;
+display:block;
+margin:auto
 }
 .slot .nm{
-  font-size:11px;
-  font-weight:700;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis
+font-size:11px;
+font-weight:700;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis
 }
 .empty{
-  padding-top:31px;
-  color:#94a3b8;
-  font-size:11px
+padding-top:31px;
+color:#94a3b8;
+font-size:11px
 }
 input{
-  width:100%;
-  padding:12px;
-  border:1px solid #cbd5e1;
-  border-radius:11px;
-  font-size:15px;
-  outline:none
-}
-input:focus{
-  border-color:#2563eb
+width:100%;
+padding:12px;
+border:1px solid #cbd5e1;
+border-radius:11px;
+font-size:15px;
+outline:none
 }
 .filters{
-  display:flex;
-  gap:7px;
-  margin:8px 0;
-  overflow:auto
+display:flex;
+gap:7px;
+margin:8px 0;
+overflow:auto
 }
 .filters button{
-  white-space:nowrap;
-  padding:8px 10px;
-  font-size:12px
+white-space:nowrap;
+padding:8px 10px;
+font-size:12px
 }
 .grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:8px
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:8px
 }
 .poke{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  text-align:left;
-  width:100%;
-  min-height:76px;
-  background:#fff;
-  color:#0f172a;
-  border:1px solid #e2e8f0;
-  border-radius:13px;
-  padding:6px;
-  box-shadow:none
+display:flex;
+align-items:center;
+gap:7px;
+text-align:left;
+width:100%;
+min-height:76px;
+background:white;
+color:#0f172a;
+border:1px solid #e2e8f0;
+padding:6px
 }
 .poke img{
-  width:54px;
-  height:54px;
-  object-fit:contain;
-  flex:0 0 54px
+width:54px;
+height:54px;
+object-fit:contain;
+flex:0 0 54px
 }
-.poke .nm{
-  font-size:12px;
-  font-weight:800
-}
-.poke .type{
-  font-size:10px;
-  color:#64748b;
-  margin-top:2px
-}
+.poke .nm{font-size:12px;font-weight:800}
+.poke .type{font-size:10px;color:#64748b}
 .poke .rank{
-  display:inline-block;
-  font-size:9px;
-  background:#eef2ff;
-  color:#3730a3;
-  border-radius:6px;
-  padding:2px 5px;
-  margin-top:4px
+display:inline-block;
+font-size:9px;
+background:#eef2ff;
+color:#3730a3;
+border-radius:6px;
+padding:2px 5px;
+margin-top:4px
 }
 .poke.selected{
-  border:2px solid #2563eb;
-  background:#eff6ff
-}
-.result{
-  background:#0f172a;
-  color:white;
-  border-radius:15px;
-  padding:14px
-}
-.result h2{
-  margin:0 0 8px
-}
-.resultrow{
-  display:flex;
-  justify-content:space-between;
-  padding:9px 0;
-  border-bottom:1px solid #ffffff20
-}
-.resultrow:last-child{
-  border-bottom:0
-}
-.score{
-  font-weight:800
-}
-.notice{
-  margin-top:10px;
-  background:#fff7ed;
-  color:#9a3412;
-  border-radius:10px;
-  padding:9px;
-  font-size:11px;
-  line-height:1.5
-}
-.hidden{
-  display:none!important
+border:2px solid #2563eb;
+background:#eff6ff
 }
 .mode{
-  margin-bottom:10px;
-  padding:9px 10px;
-  border-radius:10px;
-  background:#eff6ff;
-  color:#1d4ed8;
-  font-size:12px;
-  font-weight:700
+margin-bottom:10px;
+padding:9px 10px;
+border-radius:10px;
+background:#eff6ff;
+color:#1d4ed8;
+font-size:12px;
+font-weight:700
 }
+.result{
+background:#0f172a;
+color:white;
+border-radius:15px;
+padding:14px
+}
+.resultrow{
+display:flex;
+justify-content:space-between;
+padding:9px 0;
+border-bottom:1px solid #ffffff20
+}
+.score{font-weight:800}
+.notice{
+margin-top:10px;
+background:#fff7ed;
+color:#9a3412;
+border-radius:10px;
+padding:9px;
+font-size:11px;
+line-height:1.5
+}
+.hidden{display:none!important}
+
 @media(min-width:600px){
-  .grid{
-    grid-template-columns:repeat(3,1fr)
-  }
+.grid{grid-template-columns:repeat(3,1fr)}
 }
 </style>
 </head>
@@ -282,11 +222,7 @@ placeholder="ポケモン名で検索"
 <button id="nameBtn" class="gray">名前順</button>
 </div>
 
-<div
-id="enemyTeam"
-class="team"
-style="margin-bottom:10px"
-></div>
+<div id="enemyTeam" class="team" style="margin-bottom:10px"></div>
 
 <div id="picker" class="grid"></div>
 
@@ -295,18 +231,11 @@ style="margin-bottom:10px"
 
 <section class="card">
 
-<button
-id="judge"
-style="width:100%;font-size:16px"
->
+<button id="judge" style="width:100%;font-size:16px">
 🔥 最適選出を判定
 </button>
 
-<div
-id="result"
-class="result hidden"
-style="margin-top:12px"
-></div>
+<div id="result" class="result hidden" style="margin-top:12px"></div>
 
 </section>
 
@@ -314,13 +243,14 @@ style="margin-top:12px"
 
 
 <script>
+
 (function(){
 
 "use strict";
 
 
 /* =========================
-   ポケモンデータ
+ポケモン
 ========================= */
 
 const P=[
@@ -413,7 +343,7 @@ const ids={
 
 
 /* =========================
-   状態
+状態
 ========================= */
 
 let mine=[];
@@ -424,17 +354,18 @@ let sortMode="usage";
 
 
 /* =========================
-   保存データ読み込み
+保存
 ========================= */
 
 try{
 
-mine=JSON.parse(
-localStorage.getItem("champions_mine") || "[]"
+const saved=
+JSON.parse(
+localStorage.getItem("champions_mine")||"[]"
 );
 
-if(!Array.isArray(mine)){
-mine=[];
+if(Array.isArray(saved)){
+mine=saved.slice(0,6);
 }
 
 }catch(e){
@@ -445,7 +376,7 @@ mine=[];
 
 
 /* =========================
-   基本関数
+基本
 ========================= */
 
 function get(name){
@@ -459,9 +390,7 @@ p=>p[0]===name
 
 function sprite(p){
 
-const id=ids[p[0]];
-
-return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+id+".png";
+return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+ids[p[0]]+".png";
 
 }
 
@@ -487,26 +416,30 @@ return({
 
 
 /* =========================
-   チーム表示
+チーム表示
 ========================= */
 
 function renderTeams(){
 
-const my=document.getElementById("myTeam");
+const my=
+document.getElementById("myTeam");
 
 my.innerHTML="";
 
 for(let i=0;i<6;i++){
 
-const n=mine[i];
-const p=get(n);
+const name=mine[i];
+
+const p=get(name);
 
 if(p){
 
 my.innerHTML+=
 '<div class="slot">'+
-'<img src="'+sprite(p)+'" alt="">'+
-'<div class="nm">'+esc(n)+'</div>'+
+'<img src="'+sprite(p)+'">'+
+'<div class="nm">'+
+esc(name)+
+'</div>'+
 '</div>';
 
 }else{
@@ -523,30 +456,32 @@ my.innerHTML+=
 }
 
 
-const en=document.getElementById("enemyTeam");
+const en=
+document.getElementById("enemyTeam");
 
 en.innerHTML="";
 
 for(let i=0;i<6;i++){
 
-const n=enemy[i];
-const p=get(n);
+const name=enemy[i];
+
+const p=get(name);
 
 if(p){
 
 en.innerHTML+=
 '<div class="slot">'+
-'<img src="'+sprite(p)+'" alt="">'+
-'<div class="nm">'+esc(n)+'</div>'+
+'<img src="'+sprite(p)+'">'+
+'<div class="nm">'+
+esc(name)+
+'</div>'+
 '</div>';
 
 }else{
 
 en.innerHTML+=
 '<div class="slot">'+
-'<div class="empty">'+
-"相手 "+(i+1)+
-'</div>'+
+'<div class="empty">相手 '+(i+1)+'</div>'+
 '</div>';
 
 }
@@ -557,55 +492,48 @@ en.innerHTML+=
 
 
 /* =========================
-   モード表示
+モード表示
 ========================= */
 
 function renderMode(){
 
-const text=document.getElementById("modeText");
-
-if(mode==="mine"){
-
-text.textContent=
-"現在：自分の6体を設定・変更";
-
-}else{
-
-text.textContent=
-"現在：相手の6体を選択";
-
-}
+document.getElementById("modeText").textContent=
+mode==="mine"
+?"現在：自分の6体を設定・変更"
+:"現在：相手の6体を選択";
 
 }
 
 
 /* =========================
-   ポケモン一覧
+一覧
 ========================= */
 
 function renderPicker(){
 
+const input=
+document.getElementById("search");
+
 const q=
-document.getElementById("search")
-.value
+input.value
 .trim()
 .toLowerCase();
 
 
-let arr=P.filter(p=>
-p[0].toLowerCase().includes(q)
+let list=P.filter(
+p=>p[0].toLowerCase().includes(q)
 );
 
 
 if(sortMode==="usage"){
 
-arr.sort(
+list.sort(
 (a,b)=>b[3]-a[3]
 );
 
 }else{
 
-arr.sort(
+list.sort(
 (a,b)=>a[0].localeCompare(b[0],"ja")
 );
 
@@ -620,10 +548,10 @@ mode==="mine"
 
 document.getElementById("picker").innerHTML=
 
-arr.map(p=>{
+list.map(p=>{
 
 const selected=
-target.indexOf(p[0])>=0;
+target.includes(p[0]);
 
 return `
 
@@ -668,30 +596,27 @@ ${esc(p[1])}
 
 
 /* =========================
-   ポケモン選択
+選択
 ========================= */
 
-function toggle(name){
+function selectPokemon(name){
 
-const target=
+let target=
 mode==="mine"
 ?mine
 :enemy;
 
 
+/* すでに選択 */
+
 const index=
 target.indexOf(name);
 
-
-/* すでに選択されている場合 */
-
-if(index>=0){
+if(index!==-1){
 
 target.splice(index,1);
 
 }else{
-
-/* 最大6体 */
 
 if(target.length>=6){
 
@@ -706,7 +631,7 @@ target.push(name);
 }
 
 
-/* 自分チームを保存 */
+/* 自分なら保存 */
 
 if(mode==="mine"){
 
@@ -718,17 +643,15 @@ JSON.stringify(mine)
 }
 
 
-/* ★重要
-   選択直後に画面を更新
+/* ★ここが重要
+選択した瞬間に必ず再描画
 */
 
 renderTeams();
 renderPicker();
-renderMode();
 
 
-/* 自分6体完成後は
-   自動的に相手モード */
+/* 自分6体完成 */
 
 if(
 mode==="mine" &&
@@ -739,9 +662,8 @@ mode="enemy";
 
 document.getElementById("search").value="";
 
-renderTeams();
-renderPicker();
 renderMode();
+renderPicker();
 
 }
 
@@ -749,12 +671,12 @@ renderMode();
 
 
 /* =========================
-   タイプ相性
+タイプ
 ========================= */
 
-function typeParts(s){
+function typeParts(type){
 
-return s
+return type
 .split(" / ")
 .map(x=>x.trim());
 
@@ -763,17 +685,20 @@ return s
 
 function matchup(att,def){
 
-const at=typeParts(att);
-const de=typeParts(def);
+const a=
+typeParts(att);
+
+const d=
+typeParts(def);
 
 let score=0;
 
-at.forEach(a=>{
+a.forEach(x=>{
 
-de.forEach(d=>{
+d.forEach(y=>{
 
 if(
-(TYPES[a]||[]).includes(d)
+(TYPES[x]||[]).includes(y)
 ){
 
 score+=2;
@@ -790,27 +715,22 @@ return score;
 
 
 /* =========================
-   判定
+判定
 ========================= */
 
 function judge(){
 
-if(mine.length<6){
+if(mine.length!==6){
 
-alert(
-"自分の6体を設定してください。"
-);
+alert("自分の6体を設定してください。");
 
 return;
 
 }
 
+if(enemy.length!==6){
 
-if(enemy.length<6){
-
-alert(
-"相手の6体を選択してください。"
-);
+alert("相手の6体を選択してください。");
 
 return;
 
@@ -825,9 +745,9 @@ const p=get(name);
 
 let score=p[3]/10;
 
-enemy.forEach(e=>{
+enemy.forEach(enemyName=>{
 
-const ep=get(e);
+const ep=get(enemyName);
 
 score+=matchup(
 p[1],
@@ -841,32 +761,22 @@ name:name,
 score:score
 };
 
-})
-
-
-.sort(
+}).sort(
 (a,b)=>b.score-a.score
 );
 
 
-const top=
-ranked.slice(0,3);
-
-
-const r=
+const result=
 document.getElementById("result");
 
+result.classList.remove("hidden");
 
-r.classList.remove("hidden");
-
-
-r.innerHTML=
-
+result.innerHTML=
 "<h2>🏆 推奨選出</h2>"+
 
-top.map((x,i)=>{
-
-return `
+ranked
+.slice(0,3)
+.map((x,i)=>`
 
 <div class="resultrow">
 
@@ -881,26 +791,21 @@ ${x.score.toFixed(1)}
 
 </div>
 
-`;
-
-}).join("")+
+`)
+.join("")+
 
 `
-
 <div class="notice">
-
-この判定はタイプ相性と登録リストの使用率目安を使った簡易判定です。
-相手の技・特性・持ち物・メガ進化などを完全には再現していません。
-
+タイプ相性と使用率目安による簡易判定です。
+相手の技・特性・持ち物・メガ進化などは完全には再現していません。
 </div>
-
 `;
 
 }
 
 
 /* =========================
-   自分6体変更
+自分6体変更
 ========================= */
 
 document
@@ -911,8 +816,7 @@ function(){
 
 mode="mine";
 
-document.getElementById("search")
-.value="";
+document.getElementById("search").value="";
 
 renderMode();
 renderPicker();
@@ -929,7 +833,7 @@ block:"start"
 
 
 /* =========================
-   全消去
+全消去
 ========================= */
 
 document
@@ -939,12 +843,11 @@ document
 function(){
 
 if(
-confirm(
-"自分の6体を全部消しますか？"
-)
+confirm("自分の6体を全部消しますか？")
 ){
 
 mine=[];
+enemy=[];
 
 localStorage.removeItem(
 "champions_mine"
@@ -952,9 +855,12 @@ localStorage.removeItem(
 
 mode="mine";
 
+document.getElementById("result")
+.classList.add("hidden");
+
 renderTeams();
-renderPicker();
 renderMode();
+renderPicker();
 
 }
 
@@ -963,23 +869,19 @@ renderMode();
 
 
 /* =========================
-   検索
+検索
 ========================= */
 
 document
 .getElementById("search")
 .addEventListener(
 "input",
-function(){
-
-renderPicker();
-
-}
+renderPicker
 );
 
 
 /* =========================
-   使用率順
+使用率
 ========================= */
 
 document
@@ -997,7 +899,7 @@ renderPicker();
 
 
 /* =========================
-   名前順
+名前順
 ========================= */
 
 document
@@ -1015,7 +917,7 @@ renderPicker();
 
 
 /* =========================
-   判定ボタン
+判定
 ========================= */
 
 document
@@ -1027,8 +929,7 @@ judge
 
 
 /* =========================
-   相手6体エリア
-   タップしても相手モード
+相手6体をタップ
 ========================= */
 
 document
@@ -1047,23 +948,23 @@ renderPicker();
 
 
 /* =========================
-   ポケモン選択ボタン
+ポケモン一覧タップ
 ========================= */
 
 document
 .getElementById("picker")
 .addEventListener(
 "click",
-function(e){
+function(event){
 
 const button=
-e.target.closest(
+event.target.closest(
 "button[data-name]"
 );
 
 if(!button)return;
 
-toggle(
+selectPokemon(
 button.dataset.name
 );
 
@@ -1072,7 +973,7 @@ button.dataset.name
 
 
 /* =========================
-   初期表示
+初期表示
 ========================= */
 
 renderTeams();
