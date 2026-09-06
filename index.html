@@ -63,7 +63,7 @@ input:focus{border-color:#2563eb}
 </section>
 
 <section class="card">
-<h2>② 相手の3体</h2>
+<h2>② 相手の6体</h2>
 <input id="search" type="search" placeholder="ポケモン名で検索">
 <div class="filters">
 <button id="usageBtn" class="gray">使用率順</button>
@@ -192,7 +192,7 @@ function renderPicker(){
 
 function toggle(name){
   const a=mode==="mine"?mine:enemy;
-  const max=mode==="mine"?6:3;
+  const max=mode==="mine"?6:6;
   const i=a.indexOf(name);
   if(i>=0)a.splice(i,1);
   else if(a.length<max)a.push(name);
@@ -212,7 +212,7 @@ function matchup(att,def){
 
 function judge(){
   if(mine.length<6){alert("自分の6体を設定してください。");return}
-  if(enemy.length<3){alert("相手の3体を選択してください。");return}
+  if(enemy.length<3){alert("相手の6体を選択してください。");return}
 
   const ranked=mine.map(name=>{
     const p=get(name);
