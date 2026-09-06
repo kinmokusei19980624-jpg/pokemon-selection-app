@@ -10,71 +10,60 @@
 
 <style>
 *{box-sizing:border-box}
-
 body{
 margin:0;
 background:#eef2f7;
 color:#0f172a;
-font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
--webkit-tap-highlight-color:transparent
+font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif
 }
-
 header{
 background:#0f172a;
-color:white;
+color:#fff;
 padding:14px 16px;
 position:sticky;
 top:0;
 z-index:20;
 box-shadow:0 2px 10px #0003
 }
-
 header h1{
 font-size:18px;
 margin:0 0 4px
 }
-
 header p{
 font-size:11px;
 margin:0;
 color:#cbd5e1
 }
-
 .reg{
-margin-top:8px;
 display:inline-block;
-background:#2563eb;
+margin-top:7px;
 padding:5px 9px;
 border-radius:8px;
+background:#2563eb;
 font-size:10px;
 font-weight:800
 }
-
 main{
 max-width:760px;
 margin:auto;
 padding:12px 12px 50px
 }
-
 .card{
-background:white;
+background:#fff;
 border-radius:16px;
 padding:14px;
 margin-bottom:12px;
 box-shadow:0 2px 10px #0000000c
 }
-
 h2{
 font-size:16px;
 margin:0 0 10px
 }
-
 .small{
 font-size:11px;
 color:#64748b;
 line-height:1.6
 }
-
 button{
 border:0;
 border-radius:12px;
@@ -82,33 +71,23 @@ padding:11px 14px;
 font-size:14px;
 font-weight:700;
 background:#2563eb;
-color:white;
-touch-action:manipulation;
-cursor:pointer
+color:#fff;
+touch-action:manipulation
 }
-
 button.gray{
 background:#e2e8f0;
 color:#0f172a
 }
-
-button.red{
-background:#dc2626;
-color:white
-}
-
 .actions{
 display:flex;
 gap:8px;
 flex-wrap:wrap
 }
-
 .team{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:7px
 }
-
 .slot{
 min-height:96px;
 border:1px dashed #cbd5e1;
@@ -118,7 +97,6 @@ text-align:center;
 padding:5px;
 position:relative
 }
-
 .slot img{
 width:58px;
 height:58px;
@@ -126,7 +104,6 @@ object-fit:contain;
 display:block;
 margin:auto
 }
-
 .slot .nm{
 font-size:10px;
 font-weight:800;
@@ -134,55 +111,42 @@ white-space:nowrap;
 overflow:hidden;
 text-overflow:ellipsis
 }
-
-.slot .num{
+.num{
 position:absolute;
 top:4px;
 left:6px;
 font-size:9px;
 color:#64748b
 }
-
 .empty{
 padding-top:31px;
 color:#94a3b8;
 font-size:11px
 }
-
 input{
 width:100%;
 padding:12px;
 border:1px solid #cbd5e1;
 border-radius:11px;
 font-size:15px;
-outline:none;
-background:white
+outline:none
 }
-
-input:focus{
-border-color:#2563eb;
-box-shadow:0 0 0 3px #2563eb18
-}
-
 .filters{
 display:flex;
 gap:7px;
 margin:8px 0;
 overflow:auto
 }
-
 .filters button{
 white-space:nowrap;
 padding:8px 10px;
 font-size:12px
 }
-
 .grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:8px
 }
-
 .poke{
 display:flex;
 align-items:center;
@@ -190,30 +154,26 @@ gap:7px;
 text-align:left;
 width:100%;
 min-height:78px;
-background:white;
+background:#fff;
 color:#0f172a;
 border:1px solid #e2e8f0;
 padding:6px
 }
-
 .poke img{
 width:54px;
 height:54px;
 object-fit:contain;
 flex:0 0 54px
 }
-
 .poke .nm{
 font-size:11px;
 font-weight:800
 }
-
 .poke .type{
 font-size:9px;
 color:#64748b
 }
-
-.poke .rank{
+.rank{
 display:inline-block;
 font-size:8px;
 background:#eef2ff;
@@ -222,8 +182,7 @@ border-radius:6px;
 padding:2px 5px;
 margin-top:3px
 }
-
-.poke .mega{
+.mega{
 display:inline-block;
 font-size:8px;
 background:#fef3c7;
@@ -232,12 +191,10 @@ border-radius:5px;
 padding:2px 4px;
 margin-top:3px
 }
-
 .poke.selected{
 border:2px solid #2563eb;
 background:#eff6ff
 }
-
 .mode{
 margin-bottom:10px;
 padding:9px 10px;
@@ -247,18 +204,12 @@ color:#1d4ed8;
 font-size:12px;
 font-weight:700
 }
-
 .result{
 background:#0f172a;
-color:white;
+color:#fff;
 border-radius:15px;
 padding:14px
 }
-
-.result h2{
-color:white
-}
-
 .resultrow{
 display:flex;
 justify-content:space-between;
@@ -266,30 +217,25 @@ align-items:center;
 padding:10px 0;
 border-bottom:1px solid #ffffff20
 }
-
 .resultname{
 display:flex;
 align-items:center;
 gap:7px
 }
-
 .resultname img{
-width:38px;
-height:38px;
+width:40px;
+height:40px;
 object-fit:contain
 }
-
 .score{
-font-weight:900;
-font-size:15px
+font-size:15px;
+font-weight:900
 }
-
 .reason{
 font-size:10px;
 color:#cbd5e1;
 margin-top:2px
 }
-
 .notice{
 margin-top:10px;
 background:#fff7ed;
@@ -299,56 +245,25 @@ padding:9px;
 font-size:10px;
 line-height:1.6
 }
-
 .count{
 font-size:11px;
 color:#64748b;
 margin:8px 0
 }
-
-.hidden{
-display:none!important
-}
-
-.badge{
-display:inline-block;
-font-size:9px;
-padding:3px 6px;
-border-radius:6px;
-background:#e2e8f0;
-color:#334155;
-margin:2px 2px 0 0
-}
-
 .info{
 background:#f8fafc;
 border-radius:11px;
 padding:10px;
 font-size:10px;
 line-height:1.6;
-color:#475569;
-margin-top:10px
+color:#475569
 }
-
+.hidden{
+display:none!important
+}
 @media(min-width:600px){
 .grid{
 grid-template-columns:repeat(3,1fr)
-}
-}
-
-@media(max-width:380px){
-.team{
-grid-template-columns:repeat(3,1fr)
-}
-
-.poke{
-padding:5px
-}
-
-.poke img{
-width:48px;
-height:48px;
-flex-basis:48px
 }
 }
 </style>
@@ -365,28 +280,19 @@ flex-basis:48px
 <main>
 
 <section class="card">
-
 <h2>① 自分の6体（固定）</h2>
 
 <div id="myTeam" class="team"></div>
 
 <div class="actions" style="margin-top:10px">
-
-<button id="editMine">
-6体を設定・変更
-</button>
-
-<button id="clearMine" class="gray">
-全消去
-</button>
-
+<button id="editMine">6体を設定・変更</button>
+<button id="clearMine" class="gray">全消去</button>
 </div>
 
 <p class="small">
 設定した6体はこのSafariに保存されます。<br>
 変更するまで毎回選び直す必要はありません。
 </p>
-
 </section>
 
 
@@ -406,28 +312,14 @@ autocomplete="off"
 >
 
 <div class="filters">
-
-<button id="usageBtn">
-環境順
-</button>
-
-<button id="nameBtn" class="gray">
-名前順
-</button>
-
-<button id="clearEnemy" class="gray">
-相手6体消去
-</button>
-
+<button id="usageBtn">環境順</button>
+<button id="nameBtn" class="gray">名前順</button>
+<button id="clearEnemy" class="gray">相手6体消去</button>
 </div>
 
 <div id="count" class="count"></div>
 
-<div
-id="enemyTeam"
-class="team"
-style="margin-bottom:10px"
-></div>
+<div id="enemyTeam" class="team" style="margin-bottom:10px"></div>
 
 <div id="picker" class="grid"></div>
 
@@ -436,37 +328,28 @@ style="margin-bottom:10px"
 
 <section class="card">
 
-<button
-id="judge"
-style="width:100%;font-size:16px"
->
+<button id="judge" style="width:100%;font-size:16px">
 🔥 勝率重視で最適3体を判定
 </button>
 
-<div
-id="result"
-class="result hidden"
-style="margin-top:12px"
-></div>
+<div id="result" class="result hidden" style="margin-top:12px"></div>
 
 </section>
 
 
 <section class="card">
 
-<h2>ℹ️ このアプリについて</h2>
+<h2>ℹ️ アプリ情報</h2>
 
 <div class="info">
-
 <b>対象：</b> Pokémon Champions<br>
-<b>ルール：</b> シングルバトル 6体登録 → 3体選出<br>
+<b>ルール：</b> シングル6体 → 3体選出<br>
 <b>レギュレーション：</b> M-C<br>
-<b>判定：</b> 攻撃相性・防御相性・環境評価・役割バランスを総合評価<br>
-<b>画像：</b> Pokémon Sprites<br><br>
+<b>候補：</b> Champions対応ポケモン＋メガシンカ<br>
+<b>検索：</b> 全候補から検索可能<br><br>
 
-※「環境評価」はアプリ内の選出優先度です。
-公式ランキングをリアルタイム取得しているものではありません。
-
+環境順は選出優先度の目安です。
+公式のリアルタイム使用率を直接取得しているものではありません。
 </div>
 
 </section>
@@ -482,111 +365,170 @@ style="margin-top:12px"
 
 
 /* =====================================================
-   Pokémon Champions 選出アシスタント
-   Regulation M-C
+   Pokémon Champions M-C
+   基本ポケモンを省略しない候補データ
 ===================================================== */
 
-
-/* =====================================================
-   ポケモンデータ
-   [名前,タイプ,図鑑番号,環境評価,メガ]
-===================================================== */
+/*
+ [名前, タイプ, 全国図鑑番号, 環境評価, メガ]
+*/
 
 const P=[
 
+/* ====== 基本・環境ポケモン ====== */
+
 ["カイリュー","ドラゴン / ひこう",149,100,false],
-["ハバタクカミ","ゴースト / フェアリー",987,99,false],
 ["ガブリアス","ドラゴン / じめん",445,98,false],
+["ドラパルト","ドラゴン / ゴースト",887,94,false],
+["サザンドラ","あく / ドラゴン",635,92,false],
+["ボーマンダ","ドラゴン / ひこう",373,88,false],
+["セグレイブ","ドラゴン / こおり",998,88,false],
+["オノノクス","ドラゴン",612,75,false],
+["キングドラ","みず / ドラゴン",230,78,false],
+["ヌメルゴン","ドラゴン",706,74,false],
+["ジャラランガ","ドラゴン / かくとう",784,72,false],
+
 ["サーフゴー","はがね / ゴースト",1000,98,false],
-["ブリジュラス","はがね / ドラゴン",1018,97,false],
-["ドドゲザン","あく / はがね",983,96,false],
-["ミミッキュ","ゴースト / フェアリー",778,95,false],
-["アシレーヌ","みず / フェアリー",730,95,false],
-["マスカーニャ","くさ / あく",908,94,false],
-["イダイトウ","みず / ゴースト",902,94,false],
-["ラグラージ","みず / じめん",260,93,false],
 ["ギルガルド","はがね / ゴースト",681,93,false],
-["オーロンゲ","あく / フェアリー",861,92,false],
-["ペリッパー","みず / ひこう",279,92,false],
-["キラフロル","どく / いわ",970,92,false],
-["バシャーモ","ほのお / かくとう",257,91,false],
-["リザードン","ほのお / ひこう",6,90,false],
-["マリルリ","みず / フェアリー",184,90,false],
-["ギャラドス","みず / ひこう",130,90,false],
-["ゲンガー","ゴースト / どく",94,89,false],
-["コノヨザル","かくとう / ゴースト",979,89,false],
-["ヘラクロス","むし / かくとう",214,88,false],
-["ハッサム","むし / はがね",212,88,false],
-["アーマーガア","はがね / ひこう",823,88,false],
-["ゴリランダー","くさ",812,88,false],
-["エルフーン","くさ / フェアリー",547,87,false],
-["ブラッキー","あく",197,87,false],
-["バンギラス","いわ / あく",248,87,false],
-["カバルドン","じめん",450,87,false],
-["ランドロス（れいじゅう）","じめん / ひこう",645,87,false],
-["ガチグマ","じめん / ノーマル",901,87,false],
-["ガチグマ（アカツキ）","じめん / ノーマル",901,88,false],
-["マンムー","こおり / じめん",473,85,false],
-["テツノツツミ","こおり / みず",991,86,false],
-["ウーラオス（れんげき）","かくとう / みず",892,90,false],
-["ウーラオス（いちげき）","かくとう / あく",892,89,false],
-["パオジアン","あく / こおり",1002,88,false],
-["サザンドラ","あく / ドラゴン",635,87,false],
-["ドラパルト","ドラゴン / ゴースト",887,90,false],
-["メタグロス","はがね / エスパー",376,84,false],
-["エースバーン","ほのお",815,83,false],
-["モロバレル","くさ / どく",591,84,false],
-["ドヒドイデ","どく / みず",748,82,false],
-["ジバコイル","でんき / はがね",462,80,false],
-["ウォッシュロトム","でんき / みず",479,84,false],
-["サンダー","でんき / ひこう",145,83,false],
-["ライチュウ","でんき",26,75,false],
-["レジエレキ","でんき",894,80,false],
-["クレセリア","エスパー",488,78,false],
+["ゲンガー","ゴースト / どく",94,87,false],
+["ミミッキュ","ゴースト / フェアリー",778,94,false],
+["ハバタクカミ","ゴースト / フェアリー",987,100,false],
+["イダイトウ","みず / ゴースト",902,94,false],
+["ヤミラミ","あく / ゴースト",302,70,false],
+["コノヨザル","かくとう / ゴースト",979,86,false],
+
+["アシレーヌ","みず / フェアリー",730,94,false],
+["マスカーニャ","くさ / あく",908,94,false],
+["オーロンゲ","あく / フェアリー",861,90,false],
+["ニンフィア","フェアリー",700,76,false],
 ["サーナイト","エスパー / フェアリー",282,81,false],
-["エルレイド","エスパー / かくとう",475,78,false],
-["ニンフィア","フェアリー",700,78,false],
-["トゲキッス","フェアリー / ひこう",468,75,false],
+["トゲキッス","フェアリー / ひこう",468,74,false],
+["マリルリ","みず / フェアリー",184,88,false],
+["クレッフィ","はがね / フェアリー",707,72,false],
+["デデンネ","でんき / フェアリー",702,66,false],
+["イエッサン","エスパー / ノーマル",876,78,false],
+
+["ブリジュラス","はがね / ドラゴン",1018,97,false],
+["ドドゲザン","あく / はがね",983,94,false],
+["アーマーガア","はがね / ひこう",823,87,false],
+["ハッサム","むし / はがね",212,88,false],
+["メタグロス","はがね / エスパー",376,85,false],
 ["ナットレイ","くさ / はがね",598,80,false],
-["ドリュウズ","じめん / はがね",530,79,false],
-["グライオン","じめん / ひこう",472,81,false],
-["グレンアルマ","ほのお / エスパー",936,76,false],
-["ソウブレイズ","ほのお / ゴースト",937,78,false],
-["ヒードラン","ほのお / はがね",485,82,false],
-["ウルガモス","むし / ほのお",637,80,false],
-["ペンドラー","むし / どく",545,78,false],
-["オーガポン","くさ",1017,88,false],
-["オーガポン（かまど）","くさ / ほのお",1017,82,false],
-["オーガポン（いど）","くさ / みず",1017,85,false],
-["オーガポン（いしずえ）","くさ / いわ",1017,80,false],
-["アローラキュウコン","こおり / フェアリー",38,82,false],
-["ユキノオー","くさ / こおり",460,70,false],
-["パルシェン","みず / こおり",91,72,false],
-["ラプラス","みず / こおり",131,70,false],
+["ジバコイル","でんき / はがね",462,79,false],
+["エアームド","はがね / ひこう",227,68,false],
+["ルカリオ","かくとう / はがね",448,82,false],
+
+["ペリッパー","みず / ひこう",279,91,false],
+["ラグラージ","みず / じめん",260,93,false],
+["ギャラドス","みず / ひこう",130,88,false],
+["アシレーヌ","みず / フェアリー",730,94,false],
+["イダイトウ","みず / ゴースト",902,94,false],
+["ウォッシュロトム","でんき / みず",479,84,false],
+["ロトム","でんき / ゴースト",479,72,false],
 ["ミロカロス","みず",350,74,false],
 ["スイクン","みず",245,76,false],
-["ヘイラッシャ","みず",977,82,false],
+["シャワーズ","みず",134,65,false],
+["カメックス","みず",9,73,false],
+["ゲッコウガ","みず / あく",658,86,false],
 ["ニョロトノ","みず",186,70,false],
-["キングドラ","みず / ドラゴン",230,78,false],
-["ドオー","どく / じめん",980,77,false],
-["カビゴン","ノーマル",143,80,false],
-["ポリゴン2","ノーマル",233,82,false],
-["ハピナス","ノーマル",242,68,false],
-["ヤミラミ","あく / ゴースト",302,70,false],
-["イーユイ","あく / ほのお",1004,86,false],
-["チオンジェン","あく / くさ",1001,74,false],
-["ディンルー","あく / じめん",1003,80,false],
-["テツノカイナ","でんき / かくとう",992,87,false],
+["ドヒドイデ","どく / みず",748,79,false],
+["ヘイラッシャ","みず",977,82,false],
+["ウェーニバル","みず / かくとう",914,70,false],
+["ウーラオス（れんげき）","かくとう / みず",892,92,false],
+["ウーラオス（いちげき）","かくとう / あく",892,90,false],
+
+["リザードン","ほのお / ひこう",6,88,false],
+["バシャーモ","ほのお / かくとう",257,91,false],
+["ウインディ","ほのお",59,75,false],
+["ヒスイウインディ","ほのお / いわ",59,70,false],
+["エンテイ","ほのお",244,73,false],
+["ヒードラン","ほのお / はがね",485,82,false],
+["ファイヤー","ほのお / ひこう",146,70,false],
+["エースバーン","ほのお",815,82,false],
+["ソウブレイズ","ほのお / ゴースト",937,77,false],
+["グレンアルマ","ほのお / エスパー",936,76,false],
+["マフォクシー","ほのお / エスパー",655,68,false],
+
+["キラフロル","どく / いわ",970,92,false],
+["ゴリランダー","くさ",812,89,false],
+["オーガポン","くさ",1017,91,false],
+["オーガポン（かまど）","くさ / ほのお",1017,82,false],
+["オーガポン（いど）","くさ / みず",1017,86,false],
+["オーガポン（いしずえ）","くさ / いわ",1017,78,false],
+["モロバレル","くさ / どく",591,84,false],
+["エルフーン","くさ / フェアリー",547,84,false],
+["フシギバナ","くさ / どく",3,75,false],
+["ジュナイパー","くさ / ゴースト",724,68,false],
+["リーフィア","くさ",470,65,false],
+
+["ガチグマ","じめん / ノーマル",901,88,false],
+["ガチグマ（アカツキ）","じめん / ノーマル",901,91,false],
+["カバルドン","じめん",450,86,false],
+["ランドロス（れいじゅう）","じめん / ひこう",645,91,false],
+["ランドロス（けしん）","じめん / ひこう",645,75,false],
+["グライオン","じめん / ひこう",472,81,false],
+["ドリュウズ","じめん / はがね",530,78,false],
+["マンムー","こおり / じめん",473,80,false],
+["ドンファン","じめん",232,65,false],
+["ドオー","どく / じめん",980,76,false],
+
+["ヘラクロス","むし / かくとう",214,80,false],
+["ハッサム","むし / はがね",212,88,false],
+["ペンドラー","むし / どく",545,77,false],
+["ウルガモス","むし / ほのお",637,82,false],
+["イワパレス","むし / いわ",558,63,false],
+["デンチュラ","むし / でんき",596,67,false],
+["ビビヨン","むし / ひこう",666,65,false],
+
+["サンダー","でんき / ひこう",145,84,false],
+["ライコウ","でんき",243,74,false],
+["ライチュウ","でんき",26,76,false],
+["レジエレキ","でんき",894,80,false],
 ["パーモット","でんき / かくとう",923,74,false],
+["テツノカイナ","でんき / かくとう",992,86,false],
 ["ミライドン","でんき / ドラゴン",1008,92,false],
+["ジバコイル","でんき / はがね",462,79,false],
 
+["アローラキュウコン","こおり / フェアリー",38,81,false],
+["ユキノオー","くさ / こおり",460,70,false],
+["グレイシア","こおり",471,65,false],
+["パルシェン","みず / こおり",91,72,false],
+["ラプラス","みず / こおり",131,70,false],
+["テツノツツミ","こおり / みず",991,88,false],
 
-/* ===============================
-   メガシンカ
-=============================== */
+["クレセリア","エスパー",488,78,false],
+["エルレイド","エスパー / かくとう",475,76,false],
+["ヤレユータン","ノーマル / エスパー",765,65,false],
+["メタモン","ノーマル",132,70,false],
+
+["バンギラス","いわ / あく",248,87,false],
+["キラフロル","どく / いわ",970,92,false],
+["テツノイバラ","いわ / でんき",995,65,false],
+["セキタンザン","いわ / ほのお",839,60,false],
+["プテラ","いわ / ひこう",142,68,false],
+
+["パオジアン","あく / こおり",1002,88,false],
+["イーユイ","あく / ほのお",1004,86,false],
+["チオンジェン","あく / くさ",1001,73,false],
+["ディンルー","あく / じめん",1003,80,false],
+["ブラッキー","あく",197,87,false],
+
+["カビゴン","ノーマル",143,81,false],
+["ポリゴン2","ノーマル",233,83,false],
+["ハピナス","ノーマル",242,68,false],
+["ケンタロス","ノーマル",128,64,false],
+
+/* ====== M-C追加 ====== */
+
+["セグレイブ","ドラゴン / こおり",998,88,false],
+["グソクムシャ","むし / みず",768,79,false],
+["ボーマンダ","ドラゴン / ひこう",373,88,false],
+["ゴリランダー","くさ",812,89,false],
+
+/* ====== メガシンカ ====== */
 
 ["メガカイリュー","ドラゴン / ひこう",149,100,true],
-["メガガブリアス","ドラゴン / じめん",445,83,true],
+["メガガブリアス","ドラゴン / じめん",445,84,true],
 ["メガゲンガー","ゴースト / どく",94,92,true],
 ["メガサーナイト","エスパー / フェアリー",282,86,true],
 ["メガメタグロス","はがね / エスパー",376,92,true],
@@ -607,10 +549,7 @@ const P=[
 ["メガフシギバナ","くさ / どく",3,82,true],
 ["メガカメックス","みず",9,82,true],
 
-
-/* ===============================
-   M-C新規・追加メガ
-=============================== */
+/* ====== M-C新規メガ ===== */
 
 ["メガボーマンダ","ドラゴン / ひこう",373,94,true],
 ["メガグソクムシャ","むし / みず",768,87,true],
@@ -618,14 +557,7 @@ const P=[
 ["メガアブソルZ","あく",359,91,true],
 ["メガガブリアスZ","ドラゴン / じめん",445,93,true],
 ["メガルカリオZ","かくとう / はがね",448,94,true],
-["メガジュカイン","くさ / ドラゴン",254,85,true],
-["メガクチート","はがね / フェアリー",303,86,true],
-["メガムクホーク","ノーマル / ひこう",398,84,true],
-["メガズルズキン","あく / かくとう",560,80,true],
-["メガシビルドン","でんき",604,79,true],
-["メガマニューラ","あく / こおり",461,82,true],
-["メガガオガエン","ほのお / あく",727,83,true],
-["メガジュペッタ","ゴースト",354,74,true]
+["メガクチート","はがね / フェアリー",303,84,true]
 
 ];
 
@@ -638,14 +570,10 @@ const uniqueP=[];
 const seen=new Set();
 
 P.forEach(p=>{
-
-const key=p[0];
-
-if(!seen.has(key)){
-seen.add(key);
+if(!seen.has(p[0])){
+seen.add(p[0]);
 uniqueP.push(p);
 }
-
 });
 
 
@@ -666,175 +594,94 @@ ids[p[0]]=p[2];
 
 const EFFECTIVE={
 
-"ノーマル":{"いわ":0.5,"ゴースト":0,"はがね":0.5},
+"ノーマル":{"いわ":.5,"ゴースト":0,"はがね":.5},
 
 "ほのお":{
-"くさ":2,
-"こおり":2,
-"むし":2,
-"はがね":2,
-"ほのお":0.5,
-"みず":0.5,
-"いわ":0.5,
-"ドラゴン":0.5
+"くさ":2,"こおり":2,"むし":2,"はがね":2,
+"ほのお":.5,"みず":.5,"いわ":.5,"ドラゴン":.5
 },
 
 "みず":{
-"ほのお":2,
-"じめん":2,
-"いわ":2,
-"みず":0.5,
-"くさ":0.5,
-"ドラゴン":0.5
+"ほのお":2,"じめん":2,"いわ":2,
+"みず":.5,"くさ":.5,"ドラゴン":.5
 },
 
 "でんき":{
-"みず":2,
-"ひこう":2,
-"でんき":0.5,
-"くさ":0.5,
-"ドラゴン":0.5,
-"じめん":0
+"みず":2,"ひこう":2,
+"でんき":.5,"くさ":.5,"ドラゴン":.5,"じめん":0
 },
 
 "くさ":{
-"みず":2,
-"じめん":2,
-"いわ":2,
-"ほのお":0.5,
-"くさ":0.5,
-"どく":0.5,
-"ひこう":0.5,
-"むし":0.5,
-"ドラゴン":0.5,
-"はがね":0.5
+"みず":2,"じめん":2,"いわ":2,
+"ほのお":.5,"くさ":.5,"どく":.5,
+"ひこう":.5,"むし":.5,"ドラゴン":.5,"はがね":.5
 },
 
 "こおり":{
-"くさ":2,
-"じめん":2,
-"ひこう":2,
-"ドラゴン":2,
-"ほのお":0.5,
-"みず":0.5,
-"こおり":0.5,
-"はがね":0.5
+"くさ":2,"じめん":2,"ひこう":2,"ドラゴン":2,
+"ほのお":.5,"みず":.5,"こおり":.5,"はがね":.5
 },
 
 "かくとう":{
-"ノーマル":2,
-"こおり":2,
-"いわ":2,
-"あく":2,
-"はがね":2,
-"どく":0.5,
-"ひこう":0.5,
-"エスパー":0.5,
-"むし":0.5,
-"フェアリー":0.5,
-"ゴースト":0
+"ノーマル":2,"こおり":2,"いわ":2,"あく":2,"はがね":2,
+"どく":.5,"ひこう":.5,"エスパー":.5,"むし":.5,
+"フェアリー":.5,"ゴースト":0
 },
 
 "どく":{
-"くさ":2,
-"フェアリー":2,
-"どく":0.5,
-"じめん":0.5,
-"いわ":0.5,
-"ゴースト":0.5,
-"はがね":0
+"くさ":2,"フェアリー":2,
+"どく":.5,"じめん":.5,"いわ":.5,"ゴースト":.5,"はがね":0
 },
 
 "じめん":{
-"ほのお":2,
-"でんき":2,
-"どく":2,
-"いわ":2,
-"はがね":2,
-"くさ":0.5,
-"むし":0.5,
-"ひこう":0
+"ほのお":2,"でんき":2,"どく":2,"いわ":2,"はがね":2,
+"くさ":.5,"むし":.5,"ひこう":0
 },
 
 "ひこう":{
-"くさ":2,
-"かくとう":2,
-"むし":2,
-"でんき":0.5,
-"いわ":0.5,
-"はがね":0.5
+"くさ":2,"かくとう":2,"むし":2,
+"でんき":.5,"いわ":.5,"はがね":.5
 },
 
 "エスパー":{
-"かくとう":2,
-"どく":2,
-"エスパー":0.5,
-"はがね":0.5,
-"あく":0
+"かくとう":2,"どく":2,
+"エスパー":.5,"はがね":.5,"あく":0
 },
 
 "むし":{
-"くさ":2,
-"エスパー":2,
-"あく":2,
-"ほのお":0.5,
-"かくとう":0.5,
-"どく":0.5,
-"ひこう":0.5,
-"ゴースト":0.5,
-"はがね":0.5,
-"フェアリー":0.5
+"くさ":2,"エスパー":2,"あく":2,
+"ほのお":.5,"かくとう":.5,"どく":.5,
+"ひこう":.5,"ゴースト":.5,"はがね":.5,"フェアリー":.5
 },
 
 "いわ":{
-"ほのお":2,
-"こおり":2,
-"ひこう":2,
-"むし":2,
-"ノーマル":0.5,
-"かくとう":0.5,
-"じめん":0.5,
-"はがね":0.5
+"ほのお":2,"こおり":2,"ひこう":2,"むし":2,
+"ノーマル":.5,"かくとう":.5,"じめん":.5,"はがね":.5
 },
 
 "ゴースト":{
-"エスパー":2,
-"ゴースト":2,
-"あく":0.5,
-"ノーマル":0
+"エスパー":2,"ゴースト":2,
+"あく":.5,"ノーマル":0
 },
 
 "ドラゴン":{
 "ドラゴン":2,
-"はがね":0.5,
-"フェアリー":0
+"はがね":.5,"フェアリー":0
 },
 
 "あく":{
-"エスパー":2,
-"ゴースト":2,
-"あく":0.5,
-"かくとう":0.5,
-"フェアリー":0.5
+"エスパー":2,"ゴースト":2,
+"あく":.5,"かくとう":.5,"フェアリー":.5
 },
 
 "フェアリー":{
-"かくとう":2,
-"ドラゴン":2,
-"あく":2,
-"ほのお":0.5,
-"どく":0.5,
-"はがね":0.5
+"かくとう":2,"ドラゴン":2,"あく":2,
+"ほのお":.5,"どく":.5,"はがね":.5
 },
 
 "はがね":{
-"こおり":2,
-"いわ":2,
-"フェアリー":2,
-"ほのお":0.5,
-"みず":0.5,
-"でんき":0.5,
-"はがね":0.5
+"こおり":2,"いわ":2,"フェアリー":2,
+"ほのお":.5,"みず":.5,"でんき":.5,"はがね":.5
 }
 
 };
@@ -857,21 +704,17 @@ let sortMode="usage";
 try{
 
 const saved=JSON.parse(
-localStorage.getItem("champions_mine_mc")||"[]"
+localStorage.getItem("champions_mine_mc_v2")||"[]"
 );
 
 if(Array.isArray(saved)){
-
 mine=saved
-.filter(name=>uniqueP.some(p=>p[0]===name))
+.filter(n=>uniqueP.some(p=>p[0]===n))
 .slice(0,6);
-
 }
 
 }catch(e){
-
 mine=[];
-
 }
 
 
@@ -880,11 +723,7 @@ mine=[];
 ===================================================== */
 
 function get(name){
-
-return uniqueP.find(
-p=>p[0]===name
-);
-
+return uniqueP.find(p=>p[0]===name);
 }
 
 
@@ -894,7 +733,7 @@ p=>p[0]===name
 
 function sprite(p){
 
-return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+ids[p[0]]+".png";
+return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+p[2]+".png";
 
 }
 
@@ -907,31 +746,24 @@ function esc(s){
 
 return String(s).replace(
 /[&<>"']/g,
-function(c){
-
-return({
+c=>({
 "&":"&amp;",
 "<":"&lt;",
 ">":"&gt;",
 '"':"&quot;",
 "'":"&#39;"
-})[c];
-
-});
+}[c])
+);
 
 }
 
 
 /* =====================================================
-   タイプ
+   タイプ分割
 ===================================================== */
 
 function typeParts(type){
-
-return type
-.split(" / ")
-.map(x=>x.trim());
-
+return type.split(" / ").map(x=>x.trim());
 }
 
 
@@ -939,24 +771,19 @@ return type
    攻撃相性
 ===================================================== */
 
-function attackMultiplier(attType,defType){
+function attackMultiplier(att,def){
 
-let multiplier=1;
+let result=1;
 
-const table=EFFECTIVE[attType]||{};
+const table=EFFECTIVE[att]||{};
 
-typeParts(defType).forEach(t=>{
-
+typeParts(def).forEach(t=>{
 if(table[t]!==undefined){
-
-multiplier*=table[t];
-
+result*=table[t];
 }
-
 });
 
-return multiplier;
-
+return result;
 }
 
 
@@ -964,32 +791,25 @@ return multiplier;
    攻撃評価
 ===================================================== */
 
-function attackScore(my,opponent){
+function attackScore(my,op){
 
 let best=0;
 
-typeParts(my[1]).forEach(attType=>{
-
-const value=attackMultiplier(
-attType,
-opponent[1]
+typeParts(my[1]).forEach(t=>{
+best=Math.max(
+best,
+attackMultiplier(t,op[1])
 );
-
-if(value>best){
-best=value;
-}
-
 });
 
 if(best>=4)return 14;
 if(best===2)return 9;
 if(best===1)return 4;
-if(best===0.5)return -4;
-if(best===0.25)return -8;
+if(best===.5)return -4;
+if(best<=.25)return -8;
 if(best===0)return -10;
 
 return 0;
-
 }
 
 
@@ -997,111 +817,34 @@ return 0;
    防御評価
 ===================================================== */
 
-function defenseScore(my,opponent){
-
-let total=0;
-
-typeParts(opponent[1]).forEach(attType=>{
-
-let best=1;
-
-typeParts(my[1]).forEach(defType=>{
-
-const table=EFFECTIVE[attType]||{};
-
-let v=table[defType];
-
-if(v===undefined)v=1;
-
-best*=v;
-
-});
-
-if(best===0)total+=5;
-else if(best<=0.25)total+=5;
-else if(best<=0.5)total+=3;
-else if(best===1)total+=0;
-else if(best===2)total-=3;
-else if(best>=4)total-=6;
-
-});
-
-return total;
-
-}
-
-
-/* =====================================================
-   役割評価
-===================================================== */
-
-function roleScore(p){
+function defenseScore(my,op){
 
 let score=0;
 
-const t=p[1];
+typeParts(op[1]).forEach(att=>{
 
-if(
-t.includes("はがね")||
-t.includes("フェアリー")||
-t.includes("ゴースト")
-){
-score+=2;
-}
+let mult=1;
 
-if(
-t.includes("じめん")||
-t.includes("みず")||
-t.includes("ほのお")
-){
-score+=1;
-}
+typeParts(my[1]).forEach(def=>{
 
-if(p[4]){
+const table=EFFECTIVE[att]||{};
 
-score+=2;
-
-}
-
-return score;
-
-}
-
-
-/* =====================================================
-   チーム相性
-===================================================== */
-
-function teamSynergy(candidate,chosen){
-
-let score=0;
-
-chosen.forEach(name=>{
-
-const p=get(name);
-
-if(!p)return;
-
-const candidateTypes=typeParts(candidate[1]);
-const otherTypes=typeParts(p[1]);
-
-candidateTypes.forEach(a=>{
-otherTypes.forEach(b=>{
-
-const table=EFFECTIVE[a]||{};
-
-if(table[b]===2){
-score+=0.5;
+if(table[def]!==undefined){
+mult*=table[def];
 }
 
 });
 
-});
+if(mult===0)score+=5;
+else if(mult<=.25)score+=5;
+else if(mult<=.5)score+=3;
+else if(mult===1)score+=0;
+else if(mult===2)score-=3;
+else score-=6;
 
 });
 
 return score;
-
 }
 
 
@@ -1112,7 +855,6 @@ return score;
 function renderTeams(){
 
 const my=document.getElementById("myTeam");
-
 my.innerHTML="";
 
 for(let i=0;i<6;i++){
@@ -1123,33 +865,19 @@ const p=get(name);
 if(p){
 
 my.innerHTML+=`
-
 <div class="slot">
-
 <span class="num">${i+1}</span>
-
 <img src="${sprite(p)}">
-
-<div class="nm">
-${esc(name)}
+<div class="nm">${esc(name)}</div>
 </div>
-
-</div>
-
 `;
 
 }else{
 
 my.innerHTML+=`
-
 <div class="slot">
-
-<div class="empty">
-${i+1}体目
+<div class="empty">${i+1}体目</div>
 </div>
-
-</div>
-
 `;
 
 }
@@ -1158,7 +886,6 @@ ${i+1}体目
 
 
 const en=document.getElementById("enemyTeam");
-
 en.innerHTML="";
 
 for(let i=0;i<6;i++){
@@ -1169,33 +896,19 @@ const p=get(name);
 if(p){
 
 en.innerHTML+=`
-
 <div class="slot">
-
 <span class="num">${i+1}</span>
-
 <img src="${sprite(p)}">
-
-<div class="nm">
-${esc(name)}
+<div class="nm">${esc(name)}</div>
 </div>
-
-</div>
-
 `;
 
 }else{
 
 en.innerHTML+=`
-
 <div class="slot">
-
-<div class="empty">
-相手 ${i+1}
+<div class="empty">相手 ${i+1}</div>
 </div>
-
-</div>
-
 `;
 
 }
@@ -1212,7 +925,6 @@ en.innerHTML+=`
 function renderMode(){
 
 document.getElementById("modeText").textContent=
-
 mode==="mine"
 ?"現在：自分の6体を設定・変更"
 :"現在：相手の6体を選択";
@@ -1226,16 +938,17 @@ mode==="mine"
 
 function renderPicker(){
 
-const input=document.getElementById("search");
+const q=document
+.getElementById("search")
+.value
+.trim()
+.toLowerCase();
 
-const q=input.value.trim().toLowerCase();
 
 let list=uniqueP.filter(p=>
 p[0].toLowerCase().includes(q)
 );
 
-
-/* 使用率順 */
 
 if(sortMode==="usage"){
 
@@ -1248,12 +961,7 @@ return a[0].localeCompare(b[0],"ja");
 
 });
 
-}
-
-
-/* 名前順 */
-
-else{
+}else{
 
 list.sort((a,b)=>
 a[0].localeCompare(b[0],"ja")
@@ -1269,7 +977,8 @@ mode==="mine"
 
 
 document.getElementById("count").textContent=
-"候補："+list.length+"体　｜　選択中："+target.length+"/6体";
+"候補："+list.length+
+"体　｜　選択中："+target.length+"/6体";
 
 
 document.getElementById("picker").innerHTML=
@@ -1278,7 +987,7 @@ list.map(p=>{
 
 const selected=target.includes(p[0]);
 
-return `
+return`
 
 <button
 type="button"
@@ -1311,9 +1020,7 @@ ${esc(p[1])}
 
 ${p[4]?`
 <br>
-<span class="mega">
-メガ
-</span>
+<span class="mega">メガ</span>
 `:``}
 
 </span>
@@ -1328,7 +1035,7 @@ ${p[4]?`
 
 
 /* =====================================================
-   ポケモン選択
+   選択
 ===================================================== */
 
 function selectPokemon(name){
@@ -1341,7 +1048,6 @@ mode==="mine"
 
 const index=target.indexOf(name);
 
-
 if(index!==-1){
 
 target.splice(index,1);
@@ -1351,7 +1057,6 @@ target.splice(index,1);
 if(target.length>=6){
 
 alert("最大6体まで選択できます。");
-
 return;
 
 }
@@ -1361,12 +1066,10 @@ target.push(name);
 }
 
 
-/* 保存 */
-
 if(mode==="mine"){
 
 localStorage.setItem(
-"champions_mine_mc",
+"champions_mine_mc_v2",
 JSON.stringify(mine)
 );
 
@@ -1377,12 +1080,7 @@ renderTeams();
 renderPicker();
 
 
-/* 自分6体完成 */
-
-if(
-mode==="mine" &&
-mine.length===6
-){
+if(mode==="mine" && mine.length===6){
 
 mode="enemy";
 
@@ -1397,24 +1095,21 @@ renderPicker();
 
 
 /* =====================================================
-   最適選出
+   選出判定
 ===================================================== */
 
 function judge(){
 
 if(mine.length!==6){
 
-alert("自分の6体を6体すべて設定してください。");
-
+alert("自分の6体を6体設定してください。");
 return;
 
 }
 
-
 if(enemy.length!==6){
 
-alert("相手の6体を6体すべて選択してください。");
-
+alert("相手の6体を6体選択してください。");
 return;
 
 }
@@ -1424,23 +1119,18 @@ const ranked=mine.map(name=>{
 
 const p=get(name);
 
-let score=p[3]*0.25;
-
-
-/* 相手への攻撃相性 */
+let score=p[3]*.3;
 
 let attack=0;
-
 let defense=0;
 
-enemy.forEach(enemyName=>{
+enemy.forEach(eName=>{
 
-const ep=get(enemyName);
+const ep=get(eName);
 
 if(!ep)return;
 
 attack+=attackScore(p,ep);
-
 defense+=defenseScore(p,ep);
 
 });
@@ -1450,43 +1140,29 @@ score+=attack;
 score+=defense;
 
 
-/* 役割 */
-
-score+=roleScore(p);
-
-
 /* メガ評価 */
 
 if(p[4]){
-
 score+=3;
-
 }
 
 
-/* 使用率 */
-
-score+=p[3]*0.08;
-
-
 return{
-
-name:name,
-score:score,
-attack:attack,
-defense:defense
-
+name,
+score,
+attack,
+defense
 };
 
 });
 
 
-/* =====================================================
-   3体を選ぶ
-===================================================== */
-
 ranked.sort((a,b)=>b.score-a.score);
 
+
+/* =====================================================
+   3体選出
+===================================================== */
 
 const selected=[];
 
@@ -1498,53 +1174,41 @@ if(selected.length>=3)break;
 let penalty=0;
 
 
-/* メガシンカ重複 */
+/* メガは1体を優先 */
 
 if(
 candidate.name.includes("メガ") &&
 selected.some(x=>x.name.includes("メガ"))
 ){
 
-penalty+=18;
+penalty+=15;
 
 }
 
 
 /* タイプ被り */
 
+const cp=get(candidate.name);
+
 selected.forEach(x=>{
 
 const xp=get(x.name);
 
-const cp=get(candidate.name);
-
 if(!xp||!cp)return;
 
-const same=typeParts(xp[1]).filter(
+const same=
+typeParts(xp[1]).filter(
 t=>typeParts(cp[1]).includes(t)
 ).length;
 
-if(same>=2){
-
-penalty+=5;
-
-}else if(same===1){
-
-penalty+=1;
-
-}
+if(same>=2)penalty+=5;
+else if(same===1)penalty+=1;
 
 });
 
 
 candidate.finalScore=
-candidate.score-
-penalty+
-teamSynergy(
-get(candidate.name),
-selected.map(x=>x.name)
-);
-
+candidate.score-penalty;
 
 selected.push(candidate);
 
@@ -1568,22 +1232,20 @@ selected.map((x,i)=>{
 
 const p=get(x.name);
 
-let reason="";
+let reason;
 
 if(x.attack>=25){
-reason+="相手への攻撃相性が非常に良い";
+reason="相手6体への攻撃相性が非常に良い";
 }else if(x.attack>=12){
-reason+="相手への攻撃相性が良い";
+reason="相手への攻撃相性が良い";
+}else if(x.defense>=8){
+reason="防御面を含めた総合バランスが良い";
 }else{
-reason+="攻撃・防御の総合バランス";
-}
-
-if(x.defense>=8){
-reason+=" ＋ 防御面も優秀";
+reason="環境評価と総合相性が良い";
 }
 
 if(p[4]){
-reason+=" ＋ メガシンカ枠";
+reason+=" ＋ メガシンカ候補";
 }
 
 return`
@@ -1620,14 +1282,9 @@ ${x.finalScore.toFixed(1)}
 
 <div class="notice">
 
-この判定は、
-<b>相手6体への攻撃相性・防御相性・環境評価・役割・3体のバランス</b>
-を総合して順位付けしています。<br><br>
+判定は、相手6体への攻撃相性・防御相性・環境評価・メガシンカ枠を総合して計算しています。<br><br>
 
-メガシンカポケモンは3体すべてがメガになることを前提にはせず、
-「メガ枠は1体」という考え方で評価しています。<br><br>
-
-実戦では技・特性・持ち物・努力値・素早さ・型・読み合いによって結果が変わります。
+実際の対戦では、技・特性・持ち物・性格・努力値・素早さ・型・読み合いなどによって結果が変わります。
 
 </div>
 
@@ -1642,9 +1299,7 @@ ${x.finalScore.toFixed(1)}
 
 document
 .getElementById("editMine")
-.addEventListener(
-"click",
-function(){
+.addEventListener("click",()=>{
 
 mode="mine";
 
@@ -1653,25 +1308,23 @@ document.getElementById("search").value="";
 renderMode();
 renderPicker();
 
-document.getElementById("picker")
+document
+.getElementById("picker")
 .scrollIntoView({
 behavior:"smooth",
 block:"start"
 });
 
-}
-);
+});
 
 
 /* =====================================================
-   自分6体全消去
+   自分6体消去
 ===================================================== */
 
 document
 .getElementById("clearMine")
-.addEventListener(
-"click",
-function(){
+.addEventListener("click",()=>{
 
 if(confirm("自分の6体を全部消しますか？")){
 
@@ -1679,7 +1332,7 @@ mine=[];
 enemy=[];
 
 localStorage.removeItem(
-"champions_mine_mc"
+"champions_mine_mc_v2"
 );
 
 mode="mine";
@@ -1694,19 +1347,16 @@ renderPicker();
 
 }
 
-}
-);
+});
 
 
 /* =====================================================
-   相手6体全消去
+   相手6体消去
 ===================================================== */
 
 document
 .getElementById("clearEnemy")
-.addEventListener(
-"click",
-function(){
+.addEventListener("click",()=>{
 
 enemy=[];
 
@@ -1720,8 +1370,7 @@ renderTeams();
 renderMode();
 renderPicker();
 
-}
-);
+});
 
 
 /* =====================================================
@@ -1742,16 +1391,12 @@ renderPicker
 
 document
 .getElementById("usageBtn")
-.addEventListener(
-"click",
-function(){
+.addEventListener("click",()=>{
 
 sortMode="usage";
-
 renderPicker();
 
-}
-);
+});
 
 
 /* =====================================================
@@ -1760,16 +1405,12 @@ renderPicker();
 
 document
 .getElementById("nameBtn")
-.addEventListener(
-"click",
-function(){
+.addEventListener("click",()=>{
 
 sortMode="name";
-
 renderPicker();
 
-}
-);
+});
 
 
 /* =====================================================
@@ -1785,33 +1426,28 @@ judge
 
 
 /* =====================================================
-   相手6体エリア
+   相手6体
 ===================================================== */
 
 document
 .getElementById("enemyTeam")
-.addEventListener(
-"click",
-function(){
+.addEventListener("click",()=>{
 
 mode="enemy";
 
 renderMode();
 renderPicker();
 
-}
-);
+});
 
 
 /* =====================================================
-   候補タップ
+   ポケモン選択
 ===================================================== */
 
 document
 .getElementById("picker")
-.addEventListener(
-"click",
-function(event){
+.addEventListener("click",event=>{
 
 const button=
 event.target.closest(
@@ -1824,8 +1460,7 @@ selectPokemon(
 button.dataset.name
 );
 
-}
-);
+});
 
 
 /* =====================================================
@@ -1833,11 +1468,8 @@ button.dataset.name
 ===================================================== */
 
 renderTeams();
-
 renderMode();
-
 renderPicker();
-
 
 })();
 
