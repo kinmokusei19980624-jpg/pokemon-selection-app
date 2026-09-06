@@ -255,7 +255,7 @@ document.getElementById("picker").addEventListener("click",function(e){
 /* 6体設定中も同じ一覧を使う。最初は自分モード */
 renderTeams();renderPicker();
 
-/* 「相手3体」見出しをタップすると相手モード */
+/* 「相手6体」見出しをタップすると相手モード */
 document.querySelector("h2:nth-of-type(2)");
 document.getElementById("enemyTeam").previousElementSibling?.addEventListener("click",function(){mode="enemy";renderPicker()});
 })();
