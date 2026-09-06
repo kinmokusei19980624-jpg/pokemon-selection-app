@@ -1,26 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#0b1020">
+<meta name="theme-color" content="#0f172a">
 
-<title>Pokémon Champions 選出アシスタント</title>
+<title>ポケモンチャンピオンズ 選出アシスタント</title>
 
 <style>
-:root{
-  --bg:#0b1020;
-  --panel:#141b2d;
-  --panel2:#1b243b;
-  --text:#f4f7ff;
-  --muted:#aab4ca;
-  --accent:#62d9ff;
-  --good:#62e6a7;
-  --bad:#ff7185;
-}
-
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
@@ -28,307 +17,1027 @@
 
 body{
   margin:0;
-  background:linear-gradient(160deg,#09101d,#111a30);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP",sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  background:#0f172a;
+  color:#f8fafc;
 }
 
 header{
-  padding:18px 16px 12px;
   position:sticky;
   top:0;
-  background:rgba(9,16,29,.95);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  z-index:100;
-  border-bottom:1px solid #26304a;
+  z-index:50;
+  background:#111827;
+  padding:14px 14px 12px;
+  border-bottom:1px solid #334155;
 }
 
 h1{
-  font-size:20px;
-  margin:0 0 5px;
-}
-
-h2{
-  font-size:16px;
-  margin:0 0 10px;
-}
-
-h3{
   margin:0;
+  font-size:20px;
 }
 
 .sub{
+  margin-top:4px;
+  color:#94a3b8;
   font-size:12px;
-  color:var(--muted);
-  line-height:1.5;
 }
 
 main{
-  max-width:1050px;
+  max-width:900px;
   margin:auto;
-  padding:14px;
+  padding:12px;
 }
 
 .panel{
-  background:rgba(20,27,45,.96);
-  border:1px solid #293551;
-  border-radius:18px;
-  padding:14px;
-  margin-bottom:14px;
-  box-shadow:0 8px 30px #0004;
+  background:#1e293b;
+  border:1px solid #334155;
+  border-radius:14px;
+  padding:12px;
+  margin-bottom:12px;
 }
 
-.row{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  align-items:center;
+.panel-title{
+  font-weight:800;
+  margin-bottom:10px;
+  font-size:16px;
 }
 
-input,
-button,
-select{
-  font:inherit;
-}
-
-input,
-select{
-  flex:1;
-  min-width:180px;
-  background:#0d1527;
-  border:1px solid #33415f;
-  color:white;
-  border-radius:12px;
-  padding:11px;
-}
-
-input::placeholder{
-  color:#7f8ba5;
-}
-
-input:focus{
-  outline:none;
-  border-color:var(--accent);
-  box-shadow:0 0 0 2px #62d9ff22;
-}
-
-select{
-  background:#0d1527;
-  color:white;
-}
-
-button{
-  border:0;
-  border-radius:12px;
-  padding:10px 13px;
-  background:#263653;
-  color:white;
-  font-weight:700;
-  cursor:pointer;
-}
-
-button:active{
-  transform:scale(.97);
-}
-
-button.primary{
-  background:linear-gradient(135deg,#1c9fcb,#5967ff);
-}
-
-button.danger{
-  background:#512535;
-}
-
-/* =========================
-   検索エリア
-========================= */
-
-.searchWrap{
+.search-wrap{
   position:relative;
-  flex:1;
-  min-width:220px;
-  z-index:50;
 }
 
-.searchWrap input{
+.search{
   width:100%;
-  min-width:0;
+  padding:13px 14px;
+  border-radius:10px;
+  border:1px solid #475569;
+  background:#0f172a;
+  color:white;
+  font-size:16px;
+  outline:none;
 }
 
-/* 予測変換 */
+.search:focus{
+  border-color:#60a5fa;
+}
 
 .suggestions{
   position:absolute;
   left:0;
   right:0;
-  top:calc(100% + 5px);
-  background:#111a2c;
-  border:1px solid #3c4c70;
-  border-radius:14px;
+  top:52px;
+  z-index:100;
+  background:#111827;
+  border:1px solid #475569;
+  border-radius:10px;
   overflow:hidden;
-  box-shadow:0 14px 35px #0009;
-  display:none;
-  max-height:310px;
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+  max-height:300px;
   overflow-y:auto;
-  z-index:200;
-}
-
-.suggestions.show{
-  display:block;
 }
 
 .suggestion{
-  width:100%;
-  min-height:60px;
   display:flex;
   align-items:center;
-  gap:9px;
-  padding:8px 10px;
-  background:#111a2c;
-  border:0;
-  border-bottom:1px solid #263451;
-  border-radius:0;
-  text-align:left;
-  color:white;
+  gap:10px;
+  padding:9px 10px;
+  border-bottom:1px solid #273449;
+  cursor:pointer;
 }
 
 .suggestion:last-child{
-  border-bottom:0;
+  border-bottom:none;
 }
 
 .suggestion:active{
-  background:#20385c;
+  background:#334155;
 }
 
 .suggestion img{
-  width:44px;
-  height:44px;
+  width:42px;
+  height:42px;
   object-fit:contain;
-  flex:0 0 44px;
 }
 
-.suggestionText{
-  min-width:0;
+.s-name{
+  font-weight:700;
 }
 
-.suggestionName{
-  font-size:13px;
-  font-weight:800;
-}
-
-.suggestionType{
-  font-size:10px;
-  color:var(--muted);
+.s-meta{
+  color:#94a3b8;
+  font-size:11px;
   margin-top:2px;
 }
-
-.suggestionRank{
-  margin-left:auto;
-  font-size:9px;
-  color:#91a5c9;
-  white-space:nowrap;
-}
-
-/* =========================
-   6体スロット
-========================= */
-
-.slots{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:7px;
-  margin:10px 0;
-}
-
-.slot{
-  min-height:70px;
-  border:1px dashed #42506e;
-  border-radius:12px;
-  padding:5px;
-  text-align:center;
-  color:var(--muted);
-  font-size:10px;
-  overflow:hidden;
-}
-
-.slot img{
-  width:48px;
-  height:48px;
-  display:block;
-  margin:auto;
-  object-fit:contain;
-}
-
-.slot.selected{
-  border-style:solid;
-  border-color:var(--accent);
-  background:#162942;
-}
-
-.slotName{
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-/* =========================
-   ポケモン一覧
-========================= */
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(6,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:8px;
-  max-height:440px;
-  overflow:auto;
-  padding-right:2px;
-  margin-top:9px;
 }
 
-.card{
-  background:#111a2c;
-  border:1px solid #2c3956;
-  border-radius:13px;
+@media(min-width:700px){
+  .grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+.slot{
+  min-height:105px;
+  background:#0f172a;
+  border:1px solid #334155;
+  border-radius:12px;
   padding:7px;
-  text-align:center;
   position:relative;
   cursor:pointer;
-  transition:.12s;
 }
 
-.card:active{
-  transform:scale(.96);
+.slot.selected{
+  border-color:#22c55e;
+  box-shadow:0 0 0 2px rgba(34,197,94,.18);
 }
 
-.card:hover{
-  border-color:#5a6e9c;
-}
-
-.card img{
-  width:68px;
-  height:68px;
+.slot img{
+  display:block;
+  width:65px;
+  height:65px;
+  margin:0 auto 2px;
   object-fit:contain;
 }
 
-.name{
-  font-size:12px;
+.slot-name{
+  text-align:center;
+  font-size:13px;
+  font-weight:800;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
 }
 
-.type{
-  font-size:9px;
-  color:#9eacc6;
-  margin-top:2px;
+.slot-empty{
+  color:#64748b;
+  text-align:center;
+  padding-top:25px;
+  font-size:13px;
 }
 
-.rank{
+.remove{
   position:absolute;
-  left:5px;
+  right:5px;
   top:5px;
-  background:#0009;
-  border-radius:7px;
-  padding:2px 5px;
-  font-size:9
+  width:24px;
+  height:24px;
+  border:0;
+  border-radius:50%;
+  background:#ef4444;
+  color:white;
+  font-weight:900;
+}
+
+button{
+  border:0;
+  border-radius:10px;
+  padding:11px 14px;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.btn-primary{
+  background:#2563eb;
+  color:white;
+}
+
+.btn-green{
+  background:#16a34a;
+  color:white;
+}
+
+.btn-gray{
+  background:#475569;
+  color:white;
+}
+
+.btn-red{
+  background:#dc2626;
+  color:white;
+}
+
+.buttons{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.result{
+  background:#0f172a;
+  border:1px solid #334155;
+  border-radius:12px;
+  padding:12px;
+  line-height:1.6;
+}
+
+.result strong{
+  color:#60a5fa;
+}
+
+.notice{
+  color:#94a3b8;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.badge{
+  display:inline-block;
+  padding:3px 7px;
+  border-radius:999px;
+  background:#334155;
+  font-size:11px;
+  margin:2px;
+}
+
+.selected-count{
+  color:#60a5fa;
+  font-weight:800;
+}
+
+.team-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.team-card{
+  background:#0f172a;
+  border:1px solid #334155;
+  border-radius:10px;
+  padding:8px;
+  text-align:center;
+}
+
+.team-card img{
+  width:65px;
+  height:65px;
+  object-fit:contain;
+}
+
+.team-card div{
+  font-size:12px;
+  font-weight:800;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>⚔️ ポケモンチャンピオンズ 選出アシスタント</h1>
+  <div class="sub">シングル6体 → 3体選出 / iPhone対応</div>
+</header>
+
+<main>
+
+<section class="panel">
+  <div class="panel-title">⚙️ 設定</div>
+
+  <div class="buttons">
+    <button class="btn-gray" onclick="saveTeam()">自分の6体を保存</button>
+    <button class="btn-red" onclick="resetAll()">全リセット</button>
+  </div>
+
+  <p class="notice">
+    自分の6体は一度登録すれば、変更するまで保存されます。
+  </p>
+</section>
+
+<section class="panel">
+  <div class="panel-title">
+    👿 相手の6体
+    <span class="selected-count" id="oppCount">0 / 6</span>
+  </div>
+
+  <div class="search-wrap">
+    <input
+      id="oppSearch"
+      class="search"
+      type="text"
+      autocomplete="off"
+      placeholder="ポケモン名を入力（例：マス、イダ、カイ）"
+    >
+    <div id="oppSuggestions" class="suggestions"></div>
+  </div>
+
+  <br>
+
+  <div id="oppGrid" class="grid"></div>
+</section>
+
+<section class="panel">
+  <div class="panel-title">
+    🏠 自分の6体
+    <span class="selected-count" id="myCount">0 / 6</span>
+  </div>
+
+  <div class="search-wrap">
+    <input
+      id="mySearch"
+      class="search"
+      type="text"
+      autocomplete="off"
+      placeholder="自分のポケモンを検索"
+    >
+    <div id="mySuggestions" class="suggestions"></div>
+  </div>
+
+  <br>
+
+  <div id="myGrid" class="grid"></div>
+</section>
+
+<section class="panel">
+  <div class="panel-title">🏆 選出判定</div>
+
+  <button class="btn-green" style="width:100%;" onclick="judge()">
+    おすすめ3体を判定
+  </button>
+
+  <br><br>
+
+  <div id="result" class="result">
+    相手6体と自分6体を登録してください。
+  </div>
+</section>
+
+</main>
+
+<script>
+
+/* =========================================================
+   ポケモンデータ
+   ========================================================= */
+
+const P = [
+
+/* 御三家・基本人気 */
+
+["フシギバナ",3,"くさ","どく"],
+["リザードン",6,"ほのお","ひこう"],
+["カメックス",9,"みず",""],
+["ピカチュウ",25,"でんき",""],
+["ライチュウ",26,"でんき",""],
+["アローラライチュウ",26,"でんき","エスパー"],
+["キュウコン",38,"ほのお",""],
+["アローラキュウコン",38,"こおり","フェアリー"],
+["ニンフィア",700,"フェアリー",""],
+
+/* 強力な定番 */
+
+["ガブリアス",445,"じめん","ドラゴン"],
+["カイリュー",149,"ドラゴン","ひこう"],
+["ボーマンダ",373,"ドラゴン","ひこう"],
+["サザンドラ",635,"あく","ドラゴン"],
+["ドラパルト",887,"ドラゴン","ゴースト"],
+["メタグロス",376,"はがね","エスパー"],
+["ルカリオ",448,"かくとう","はがね"],
+["ゲンガー",94,"ゴースト","どく"],
+["ミミッキュ",778,"ゴースト","フェアリー"],
+["ギャラドス",130,"みず","ひこう"],
+["バンギラス",248,"いわ","あく"],
+["ハッサム",212,"むし","はがね"],
+["アーマーガア",823,"ひこう","はがね"],
+["ドリュウズ",530,"じめん","はがね"],
+["ドドゲザン",983,"あく","はがね"],
+["サーフゴー",1000,"はがね","ゴースト"],
+["キラフロル",970,"いわ","どく"],
+["ブリジュラス",1018,"はがね","ドラゴン"],
+
+/* パルデア御三家 */
+
+["マスカーニャ",908,"くさ","あく"],
+["ウェーニバル",914,"みず","かくとう"],
+["ラウドボーン",911,"ほのお","ゴースト"],
+
+/* ヒスイ */
+
+["イダイトウ♂",902,"みず","ゴースト"],
+["イダイトウ♀",902,"みず","ゴースト"],
+["ダイケンキ（ヒスイ）",503,"みず","あく"],
+["ゾロアーク（ヒスイ）",571,"ノーマル","ゴースト"],
+["ウインディ（ヒスイ）",59,"ほのお","いわ"],
+
+/* アローラ */
+
+["アシレーヌ",730,"みず","フェアリー"],
+["ガラガラ（アローラ）",105,"ほのお","ゴースト"],
+["キュウコン（アローラ）",38,"こおり","フェアリー"],
+
+/* その他 */
+
+["バシャーモ",257,"ほのお","かくとう"],
+["ヘラクロス",214,"むし","かくとう"],
+["ペンドラー",545,"むし","どく"],
+["オーロンゲ",861,"あく","フェアリー"],
+["エルフーン",547,"くさ","フェアリー"],
+["ブラッキー",197,"あく",""],
+["ピクシー",36,"フェアリー",""],
+["スターミー",121,"みず","エスパー"],
+["ラグラージ",260,"みず","じめん"],
+["ペリッパー",279,"みず","ひこう"],
+["ハラバリー",939,"でんき",""],
+["ドヒドイデ",748,"どく","みず"],
+["カバルドン",450,"じめん",""],
+["マフォクシー",655,"ほのお","エスパー"],
+["ウルガモス",637,"むし","ほのお"],
+["ムクホーク",398,"ノーマル","ひこう"],
+["ウォッシュロトム",479,"でんき","みず"],
+["ミミロップ",428,"ノーマル",""],
+["ソウブレイズ",937,"ほのお","ゴースト"],
+["クチート",303,"はがね","フェアリー"],
+["メガニウム",154,"くさ",""],
+["スコヴィラン",952,"くさ","ほのお"],
+["フラエッテ（えいえんのはな）",670,"フェアリー",""],
+["オオニューラ",903,"かくとう","どく"],
+["セグレイブ",998,"ドラゴン","こおり"],
+["ゴリランダー",812,"くさ",""],
+["ヒードラン",485,"ほのお","はがね"],
+
+/* M-C */
+
+["メガアブソルZ",359,"あく","ゴースト"],
+["メガガブリアスZ",445,"じめん","ドラゴン"],
+["メガルカリオZ",448,"かくとう","はがね"],
+
+["メガリザードンX",6,"ほのお","ドラゴン"],
+["メガリザードンY",6,"ほのお","ひこう"],
+["メガカメックス",9,"みず",""],
+["メガフシギバナ",3,"くさ","どく"],
+["メガギャラドス",130,"みず","あく"],
+["メガゲンガー",94,"ゴースト","どく"],
+["メガガブリアス",445,"じめん","ドラゴン"],
+["メガルカリオ",448,"かくとう","はがね"],
+["メガバシャーモ",257,"ほのお","かくとう"],
+["メガミミロップ",428,"ノーマル","かくとう"],
+["メガヘラクロス",214,"むし","かくとう"],
+["メガクチート",303,"はがね","フェアリー"],
+["メガメタグロス",376,"はがね","エスパー"],
+["メガラグラージ",260,"みず","じめん"],
+["メガバンギラス",248,"いわ","あく"],
+["メガハッサム",212,"むし","はがね"],
+["メガアブソル",359,"あく",""],
+["メガヤミラミ",302,"あく","ゴースト"],
+["メガサーナイト",282,"エスパー","フェアリー"],
+["メガエルレイド",475,"エスパー","かくとう"],
+["メガチルタリス",334,"ドラゴン","フェアリー"],
+["メガボーマンダ",373,"ドラゴン","ひこう"],
+["メガセグレイブ",998,"ドラゴン","こおり"],
+["メガグソクムシャ",768,"むし","みず"]
+
+];
+
+/* =========================================================
+   追加検索用の別名
+   ========================================================= */
+
+const ALIAS = {
+  "ます":"マスカーニャ",
+  "ますか":"マスカーニャ",
+  "ますかーにゃ":"マスカーニャ",
+
+  "いだ":"イダイトウ♂",
+  "いだい":"イダイトウ♂",
+  "いだいとう":"イダイトウ♂",
+  "いだいとうおす":"イダイトウ♂",
+  "いだいとうめす":"イダイトウ♀",
+
+  "かい":"カイリュー",
+  "かいり":"カイリュー",
+  "かいりゅう":"カイリュー",
+
+  "がぶ":"ガブリアス",
+  "さーふ":"サーフゴー",
+  "きら":"キラフロル",
+  "ぶり":"ブリジュラス",
+  "あし":"アシレーヌ",
+  "ぺり":"ペリッパー",
+  "らぐ":"ラグラージ",
+  "ばしゃ":"バシャーモ",
+  "ぺん":"ペンドラー",
+  "える":"エルフーン",
+  "おーろん":"オーロンゲ"
+};
+
+/* =========================================================
+   状態
+   ========================================================= */
+
+let oppSel = JSON.parse(localStorage.getItem("oppSel") || "[]");
+let mySel  = JSON.parse(localStorage.getItem("mySel") || "[]");
+
+/* =========================================================
+   画像
+   ========================================================= */
+
+function imgUrl(id){
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+}
+
+/* =========================================================
+   検索
+   ========================================================= */
+
+function normalize(s){
+  return String(s || "")
+    .toLowerCase()
+    .replaceAll(" ","")
+    .replaceAll("　","")
+    .replaceAll("・","")
+    .replaceAll("-","")
+    .replaceAll("ー","");
+}
+
+function searchPokemon(query){
+
+  const q = normalize(query);
+
+  if(!q){
+    return P.slice(0,20);
+  }
+
+  const alias = Object.keys(ALIAS)
+    .filter(a => normalize(a).startsWith(q))
+    .map(a => ALIAS[a]);
+
+  const results = [];
+
+  alias.forEach(name=>{
+    const p = P.find(x=>x[0]===name);
+    if(p && !results.includes(p)) results.push(p);
+  });
+
+  P.forEach(p=>{
+    const name = normalize(p[0]);
+
+    if(
+      name.startsWith(q) ||
+      name.includes(q)
+    ){
+      if(!results.includes(p)) results.push(p);
+    }
+  });
+
+  return results.slice(0,15);
+}
+
+/* =========================================================
+   候補表示
+   ========================================================= */
+
+function showSuggestions(mode){
+
+  const input =
+    mode==="opp"
+    ? document.getElementById("oppSearch")
+    : document.getElementById("mySearch");
+
+  const box =
+    mode==="opp"
+    ? document.getElementById("oppSuggestions")
+    : document.getElementById("mySuggestions");
+
+  const list = searchPokemon(input.value);
+
+  box.innerHTML="";
+
+  list.forEach(p=>{
+
+    const div=document.createElement("div");
+    div.className="suggestion";
+
+    div.innerHTML=`
+      <img src="${imgUrl(p[1])}" alt="">
+      <div>
+        <div class="s-name">${p[0]}</div>
+        <div class="s-meta">
+          ${p[2]}${p[3] ? " / "+p[3] : ""}
+        </div>
+      </div>
+    `;
+
+    div.onclick=()=>{
+      addPokemon(mode,p[0]);
+      input.value="";
+      box.innerHTML="";
+    };
+
+    box.appendChild(div);
+  });
+}
+
+/* =========================================================
+   ポケモン追加
+   ========================================================= */
+
+function addPokemon(mode,name){
+
+  const target = mode==="opp" ? oppSel : mySel;
+
+  if(target.includes(name)){
+    return;
+  }
+
+  if(target.length>=6){
+    alert("6体まで選択できます。");
+    return;
+  }
+
+  target.push(name);
+
+  saveState();
+  renderAll();
+}
+
+/* =========================================================
+   削除
+   ========================================================= */
+
+function removePokemon(mode,index){
+
+  if(mode==="opp"){
+    oppSel.splice(index,1);
+  }else{
+    mySel.splice(index,1);
+  }
+
+  saveState();
+  renderAll();
+}
+
+/* =========================================================
+   表示
+   ========================================================= */
+
+function render(mode){
+
+  const target = mode==="opp" ? oppSel : mySel;
+
+  const grid =
+    mode==="opp"
+    ? document.getElementById("oppGrid")
+    : document.getElementById("myGrid");
+
+  const count =
+    mode==="opp"
+    ? document.getElementById("oppCount")
+    : document.getElementById("myCount");
+
+  grid.innerHTML="";
+
+  count.textContent=`${target.length} / 6`;
+
+  for(let i=0;i<6;i++){
+
+    const div=document.createElement("div");
+    div.className="slot";
+
+    if(target[i]){
+
+      const p=P.find(x=>x[0]===target[i]);
+
+      if(p){
+
+        div.innerHTML=`
+          <button class="remove">×</button>
+          <img src="${imgUrl(p[1])}" alt="">
+          <div class="slot-name">${p[0]}</div>
+        `;
+
+        div.querySelector(".remove").onclick=(e)=>{
+          e.stopPropagation();
+          removePokemon(mode,i);
+        };
+      }
+
+    }else{
+
+      div.innerHTML=`
+        <div class="slot-empty">
+          ${i+1}体目<br>
+          検索して追加
+        </div>
+      `;
+    }
+
+    grid.appendChild(div);
+  }
+}
+
+function renderAll(){
+  render("opp");
+  render("my");
+}
+
+/* =========================================================
+   保存
+   ========================================================= */
+
+function saveState(){
+  localStorage.setItem("oppSel",JSON.stringify(oppSel));
+  localStorage.setItem("mySel",JSON.stringify(mySel));
+}
+
+function saveTeam(){
+
+  saveState();
+
+  alert(
+    "自分の6体を保存しました。\n\n"+
+    mySel.join(" / ")
+  );
+}
+
+/* =========================================================
+   リセット
+   ========================================================= */
+
+function resetAll(){
+
+  if(!confirm("登録したポケモンをすべて削除しますか？")){
+    return;
+  }
+
+  oppSel=[];
+  mySel=[];
+
+  saveState();
+  renderAll();
+
+  document.getElementById("result").innerHTML=
+    "相手6体と自分6体を登録してください。";
+}
+
+/* =========================================================
+   タイプ相性
+   ========================================================= */
+
+const EFFECTIVE = {
+
+"ノーマル":{
+"いわ":0.5,"はがね":0.5,"ゴースト":0
+},
+
+"ほのお":{
+"くさ":2,"こおり":2,"むし":2,"はがね":2,
+"ほのお":0.5,"みず":0.5,"いわ":0.5,"ドラゴン":0.5
+},
+
+"みず":{
+"ほのお":2,"じめん":2,"いわ":2,
+"みず":0.5,"くさ":0.5,"ドラゴン":0.5
+},
+
+"でんき":{
+"みず":2,"ひこう":2,
+"でんき":0.5,"くさ":0.5,"ドラゴン":0.5,"じめん":0
+},
+
+"くさ":{
+"みず":2,"じめん":2,"いわ":2,
+"ほのお":0.5,"くさ":0.5,"どく":0.5,
+"ひこう":0.5,"むし":0.5,"ドラゴン":0.5,"はがね":0.5
+},
+
+"こおり":{
+"くさ":2,"じめん":2,"ひこう":2,"ドラゴン":2,
+"ほのお":0.5,"みず":0.5,"こおり":0.5,"はがね":0.5
+},
+
+"かくとう":{
+"ノーマル":2,"こおり":2,"いわ":2,"あく":2,"はがね":2,
+"どく":0.5,"ひこう":0.5,"エスパー":0.5,"むし":0.5,"フェアリー":0.5,
+"ゴースト":0
+},
+
+"どく":{
+"くさ":2,"フェアリー":2,
+"どく":0.5,"じめん":0.5,"いわ":0.5,"ゴースト":0.5,"はがね":0
+},
+
+"じめん":{
+"ほのお":2,"でんき":2,"どく":2,"いわ":2,"はがね":2,
+"くさ":0.5,"むし":0.5,"ひこう":0
+},
+
+"ひこう":{
+"くさ":2,"かくとう":2,"むし":2,
+"でんき":0.5,"いわ":0.5,"はがね":0.5
+},
+
+"エスパー":{
+"かくとう":2,"どく":2,
+"エスパー":0.5,"はがね":0.5,"あく":0
+},
+
+"むし":{
+"くさ":2,"エスパー":2,"あく":2,
+"ほのお":0.5,"かくとう":0.5,"どく":0.5,
+"ひこう":0.5,"ゴースト":0.5,"はがね":0.5,"フェアリー":0.5
+},
+
+"いわ":{
+"ほのお":2,"こおり":2,"ひこう":2,"むし":2,
+"かくとう":0.5,"じめん":0.5,"はがね":0.5
+},
+
+"ゴースト":{
+"エスパー":2,"ゴースト":2,
+"あく":0.5,"ノーマル":0
+},
+
+"ドラゴン":{
+"ドラゴン":2,
+"はがね":0.5,"フェアリー":0
+},
+
+"あく":{
+"エスパー":2,"ゴースト":2,
+"かくとう":0.5,"あく":0.5,"フェアリー":0.5
+},
+
+"はがね":{
+"こおり":2,"いわ":2,"フェアリー":2,
+"ほのお":0.5,"みず":0.5,"でんき":0.5,"はがね":0.5
+},
+
+"フェアリー":{
+"かくとう":2,"ドラゴン":2,"あく":2,
+"ほのお":0.5,"どく":0.5,"はがね":0.5
+}
+
+};
+
+/* =========================================================
+   相性倍率
+   ========================================================= */
+
+function typeEffect(attacker,defenderTypes){
+
+  let value=1;
+
+  defenderTypes.forEach(type=>{
+    if(EFFECTIVE[attacker] &&
+       EFFECTIVE[attacker][type] !== undefined){
+
+      value *= EFFECTIVE[attacker][type];
+    }
+  });
+
+  return value;
+}
+
+/* =========================================================
+   簡易評価
+   ========================================================= */
+
+function scorePokemon(p, enemies){
+
+  let score=50;
+
+  const attackTypes=[];
+
+  if(p[2]) attackTypes.push(p[2]);
+  if(p[3]) attackTypes.push(p[3]);
+
+  enemies.forEach(enemyName=>{
+
+    const e=P.find(x=>x[0]===enemyName);
+
+    if(!e) return;
+
+    let best=0;
+
+    attackTypes.forEach(t=>{
+      best=Math.max(
+        best,
+        typeEffect(t,[e[2],e[3]].filter(Boolean))
+      );
+    });
+
+    if(best>=4) score+=25;
+    else if(best>=2) score+=15;
+    else if(best===1) score+=5;
+    else if(best<1) score-=10;
+  });
+
+  return score;
+}
+
+/* =========================================================
+   判定
+   ========================================================= */
+
+function judge(){
+
+  const result=document.getElementById("result");
+
+  if(mySel.length<6){
+    result.innerHTML=
+      "⚠️ <strong>自分の6体</strong>を登録してください。";
+    return;
+  }
+
+  if(oppSel.length<6){
+    result.innerHTML=
+      "⚠️ <strong>相手の6体</strong>を登録してください。";
+    return;
+  }
+
+  const scored=mySel.map(name=>{
+
+    const p=P.find(x=>x[0]===name);
+
+    return {
+      name,
+      score:scorePokemon(p,oppSel)
+    };
+  });
+
+  scored.sort((a,b)=>b.score-a.score);
+
+  const best=scored.slice(0,3);
+
+  result.innerHTML=`
+    <h3>🏆 おすすめ選出</h3>
+
+    <div class="team-row">
+      ${best.map(x=>{
+        const p=P.find(y=>y[0]===x.name);
+
+        return `
+          <div class="team-card">
+            <img src="${imgUrl(p[1])}">
+            <div>${p[0]}</div>
+          </div>
+        `;
+      }).join("")}
+    </div>
+
+    <br>
+
+    <strong>選出順位</strong><br>
+
+    ${scored.map((x,i)=>
+      `${i+1}位　${x.name}　評価 ${x.score}`
+    ).join("<br>")}
+
+    <br><br>
+
+    <span class="notice">
+      ※これはタイプ相性を中心にした簡易選出判定です。
+    </span>
+  `;
+}
+
+/* =========================================================
+   検索イベント
+   ========================================================= */
+
+document.getElementById("oppSearch")
+.addEventListener("input",()=>{
+  showSuggestions("opp");
+});
+
+document.getElementById("mySearch")
+.addEventListener("input",()=>{
+  showSuggestions("my");
+});
+
+/* フォーカス時にも候補を表示 */
+
+document.getElementById("oppSearch")
+.addEventListener("focus",()=>{
+  showSuggestions("opp");
+});
+
+document.getElementById("mySearch")
+.addEventListener("focus",()=>{
+  showSuggestions("my");
+});
+
+/* 外側タップで候補を閉じる */
+
+document.addEventListener("click",(e)=>{
+
+  if(!e.target.closest(".search-wrap")){
+
+    document.getElementById("oppSuggestions").innerHTML="";
+    document.getElementById("mySuggestions").innerHTML="";
+  }
+});
+
+/* 初期表示 */
+
+renderAll();
+
+</script>
+
+</body>
+</html>
