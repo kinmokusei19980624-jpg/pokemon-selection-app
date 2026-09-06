@@ -151,7 +151,7 @@ let mode="mine";
 let sortMode="usage";
 
 try{mine=JSON.parse(localStorage.getItem("champions_mine")||"[]")}catch(e){mine=[]}
-
+if(mine.length===6) mode="enemy";
 function sprite(p){
   const id=ids[p[0]];
   return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+id+".png";
@@ -260,7 +260,7 @@ document.getElementById("picker").addEventListener("click",function(e){
 });
 
 /* 6体設定中も同じ一覧を使う。最初は自分モード */
-renderTeams();renderPicker();
+
 
 /* 「
 })();
